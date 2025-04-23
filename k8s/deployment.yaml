@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: etl-api-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: etl-api
+  template:
+    metadata:
+      labels:
+        app: etl-api
+    spec:
+      containers:
+      - name: etl-api
+        image: etl-pipeline:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - configMapRef:
+            name: etl-config
+        - secretRef:
+            name: etl-secret
