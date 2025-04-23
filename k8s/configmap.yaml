@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: etl-config
+data:
+  CSV_FILE_PATH: "netflix_titles.csv"
+  OUTPUT_FILE_PATH: "output_clean.parquet"
+  AWS_BUCKET_NAME: "testguru2"
